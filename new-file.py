@@ -36,7 +36,7 @@ class NewFileExtension(Nautilus.MenuProvider, GObject.GObject):
     def get_background_items(self, window, file):
         # Top Menu
         top_menuitem = Nautilus.MenuItem(name='NewFileExtension::NewFileBG', 
-                                         label='New File...', 
+                                         label='New File',
                                          tip='',
                                          icon='')
 
