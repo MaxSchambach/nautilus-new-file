@@ -22,56 +22,17 @@ try:
 except ImportError:
     from urllib.parse import unquote
 
-from gi.repository import Nautilus, GObject
+import gi
+gi.require_version('GConf', '2.0')
+from gi.repository import Nautilus, GObject, GConf
 
-class NewFileExtension(GObject.GObject, Nautilus.MenuProvider):
+
+class NewFileExtension(Nautilus.MenuProvider, GObject.GObject):
     def __init__(self):
-        pass
+        self.client = GConf.Client.get_default()
 
     def get_file_items(self, window, files):
-        if len(files) != 1:
-            return
-        
-        file = files[0]
-        if not file.is_directory() or file.get_uri_scheme() != 'file':
-            return
-
-        # Top Menu
-        top_menuitem = Nautilus.MenuItem(name='NewFileExtension::NewFile', 
-                                         label='New File...', 
-                                         tip='',
-                                         icon='')
-
-        # Sub Menu
-        submenu = Nautilus.Menu()
-        
-        # Sub Menu Item 1: New Empty File
-        sub_menuitem = Nautilus.MenuItem(name='NewFileExtension::NewFileEmpty', 
-                                         label='New Empty File', 
-                                         tip='',
-                                         icon='')
-        sub_menuitem.connect('activate', self.newfile_menu_activate_cb, file)
-        submenu.append_item(sub_menuitem)
-
-        # Sub Menu Item 2: New Empty File
-        sub_menuitem = Nautilus.MenuItem(name='NewFileExtension::NewFileTxt', 
-                                         label='New .txt File', 
-                                         tip='',
-                                         icon='')
-        sub_menuitem.connect('activate', self.newtxt_menu_activate_cb, file)
-        submenu.append_item(sub_menuitem)
-
-        # Sub Menu Item 3: New Empty File
-        sub_menuitem = Nautilus.MenuItem(name='NewFileExtension::NewFileOds', 
-                                         label='New .ods File', 
-                                         tip='',
-                                         icon='')
-        sub_menuitem.connect('activate', self.newods_menu_activate_cb, file)
-        submenu.append_item(sub_menuitem)
-
-        top_menuitem.set_submenu(submenu)
-
-        return top_menuitem,
+        pass
 
     def get_background_items(self, window, file):
         # Top Menu
