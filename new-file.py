@@ -23,13 +23,12 @@ except ImportError:
     from urllib.parse import unquote
 
 import gi
-gi.require_version('GConf', '2.0')
-from gi.repository import Nautilus, GObject, GConf
+from gi.repository import Nautilus, GObject
 
 
 class NewFileExtension(Nautilus.MenuProvider, GObject.GObject):
     def __init__(self):
-        self.client = GConf.Client.get_default()
+        pass
 
     def get_file_items(self, window, files):
         pass
