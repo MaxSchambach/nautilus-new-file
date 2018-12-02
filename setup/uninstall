@@ -1,5 +1,0 @@
-#! /bin/bash
-
-echo "Uninstalling New File Nautilus extension..."
-rm ~/.local/share/nautilus-python/extensions/new-file.py
-echo "Done."

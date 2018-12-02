@@ -1,7 +1,0 @@
-#! /bin/bash
-
-echo "Installing New File Nautilus extension..."
-mkdir -p ~/.local/share/nautilus-python/extensions/
-cp -i ./new-file.py ~/.local/share/nautilus-python/extensions/
-chmod 755 ~/.local/share/nautilus-python/extensions/new-file.py
-echo "Done."

@@ -48,7 +48,7 @@ class NewFileExtension(Nautilus.MenuProvider, GObject.GObject):
                                          label='New Empty File', 
                                          tip='',
                                          icon='')
-        sub_menuitem.connect('activate', self.newfile_menu_background_activate_cb, file)
+        sub_menuitem.connect('activate', self.newfile_menu_cb, file)
         submenu.append_item(sub_menuitem)
 
         # Sub Menu Item 2: New Empty File
@@ -56,7 +56,7 @@ class NewFileExtension(Nautilus.MenuProvider, GObject.GObject):
                                          label='New .txt File', 
                                          tip='',
                                          icon='')
-        sub_menuitem.connect('activate', self.newtxt_menu_background_activate_cb, file)
+        sub_menuitem.connect('activate', self.newtxt_menu_cb, file)
         submenu.append_item(sub_menuitem)
 
         # Sub Menu Item 3: New Empty File
@@ -64,7 +64,7 @@ class NewFileExtension(Nautilus.MenuProvider, GObject.GObject):
                                          label='New .ods File', 
                                          tip='',
                                          icon='')
-        sub_menuitem.connect('activate', self.newods_menu_background_activate_cb, file)
+        sub_menuitem.connect('activate', self.newods_menu_cb, file)
         submenu.append_item(sub_menuitem)
 
         top_menuitem.set_submenu(submenu)
@@ -95,19 +95,11 @@ class NewFileExtension(Nautilus.MenuProvider, GObject.GObject):
         os.system("soffice --writer '" + filepath + "'")
 
     # Define Menu callbacks
-    def newfile_menu_activate_cb(self, menu, file):
-        self._new_file(file)
-    def newfile_menu_background_activate_cb(self, menu, file):
+    def newfile_menu_cb(self, menu, file):
         self._new_file(file)
 
-    def newtxt_menu_activate_cb(self, menu, file):
-        self._new_txt_file(file)
-    def newtxt_menu_background_activate_cb(self, menu, file):
+    def newtxt_menu_cb(self, menu, file):
         self._new_txt_file(file)
 
-    def newods_menu_activate_cb(self, menu, file):
+    def newods_menu_cb(self, menu, file):
         self._new_ods_file(file)
-    def newods_menu_background_activate_cb(self, menu, file):
-        self._new_ods_file(file)
-
-
