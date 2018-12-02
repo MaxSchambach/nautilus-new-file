@@ -8,10 +8,14 @@ This is a simple Nautilus Extension to add a "New File" context menu entry for c
 
 From the main repository folder, run
 
+    mkdir build
+    cd build
+    cmake ..
     make
+    make install
     
 This installs the Nautilus extension to ``~/.local/share/nautilus-python/extensions/``.
-If you need to, change the paths in the according install scripts in the `´setup`` folder.
+If you need to, change the path in the `CMakeLists.txt` file.
 
 ## Uninstallation
 
@@ -19,4 +23,4 @@ To uninstall, simply run
 
     make uninstall
    
-from within the repository folder. 
+from within the `build` folder. 
